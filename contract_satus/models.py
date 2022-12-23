@@ -1,3 +1,8 @@
 from django.db import models
+from contract.models import Contract
 
-# Create your models here.
+
+
+class ContratStatus(models.Model):
+      contract_id =  models.ForeignKey(to=Contract, on_delete=models.CASCADE)
+      is_signed = models.BooleanField(default=False)
