@@ -1,3 +1,4 @@
 from django.contrib import admin
+from contract_satus.models import ContratStatus
 
-# Register your models here.
+admin.site.register(ContratStatus)
