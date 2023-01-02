@@ -1,4 +1,9 @@
 from django.contrib import admin
-from contract.models import Contract
+from .models import Contract
 
-admin.site.register(Contract)
+
+class ContractAdmin(admin.ModelAdmin):
+    list_filter = ('date_created',)
+
+
+admin.site.register(Contract, ContractAdmin)
