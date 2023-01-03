@@ -35,6 +35,7 @@ class UserAdmin(BaseUserAdmin):
         ),
     )
     list_display = ('id', 'email', )
+    list_filter = ('role',)
     ordering = ('email',)
     
 
