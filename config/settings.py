@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "client",
     "contract",
     "config",
-    "contract_satus",
+    "contract_status",
     "event",
     "user",
 ]
@@ -89,7 +89,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'projet12',
+        'NAME': 'ocprojet12',
         'USER': 'johann',
         'PASSWORD': 'admin',
         'HOST': 'localhost',

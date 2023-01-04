@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib import admin
-from .models import User
+from user.models import User
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 
@@ -22,7 +22,6 @@ class UserAdmin(BaseUserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     list_filter = ('role', )
-    exclude = ('username',)
     fieldsets = (
         ('Personal info', {'fields': ('first_name', 'last_name', 'phone_number', 'email', 'password')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
@@ -34,7 +33,7 @@ class UserAdmin(BaseUserAdmin):
             'fields': ('email', 'password1', 'password2')}
         ),
     )
-    list_display = ('id', 'email', )
+    list_display = ('username', 'email', )
     list_filter = ('role',)
     ordering = ('email',)
     
