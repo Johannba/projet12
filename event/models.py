@@ -1,5 +1,6 @@
 
 from django.db import models
+from contract_status.models import ContratStatus
 from user.models import User
 from client.models import Client
 
@@ -30,7 +31,7 @@ class Event(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now_add=True)
 
-    event_status = models.ForeignKey(to=EventStatus, on_delete=models.CASCADE)
+    event_status = models.ForeignKey(to=ContratStatus, on_delete=models.CASCADE)
 
     attendees = models.IntegerField(default=0)
     event_date = models.DateTimeField(auto_now_add=False)
