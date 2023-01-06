@@ -18,6 +18,9 @@ class Client(models.Model):
 
     sales_contact = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='sales_contact')
 
+    class Meta:
+        verbose_name = 'Client'
+
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
 
@@ -27,3 +30,6 @@ class Client(models.Model):
     def save(self, *args, **kwargs):
         self.update_date()
         return super(Client, self).save()
+    
+
+    
