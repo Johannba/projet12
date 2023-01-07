@@ -19,23 +19,12 @@ class CustomUserChangeForm(UserChangeForm):
 
 
 class UserAdmin(BaseUserAdmin):
-    add_form = CustomUserCreationForm
-    form = CustomUserChangeForm
-    list_filter = ('role', )
-    fieldsets = (
-        ('Personal info', {'fields': ('first_name', 'last_name', 'phone_number', 'email', 'password')}),
-        ('Important dates', {'fields': ('last_login', 'date_joined')}),
-        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
-    )
-    add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2')}
-        ),
-    )
-    list_display = ('username', 'email', )
+
+    list_display = ( 'email', "role",)
     list_filter = ('role',)
     ordering = ('email',)
+    search_fields = ("role",)
+  
     
 
 admin.site.register(User, UserAdmin)

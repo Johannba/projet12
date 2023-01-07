@@ -11,4 +11,4 @@ class ContractstatusViewset(ModelViewSet):
       serializer_class = ContractStatusSerializer     
 
       def get_queryset(self):
-            return ContratStatus.objects.all()
+            return ContratStatus.objects.filter(contract_id=self.kwargs["pk"])
