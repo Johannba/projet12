@@ -23,3 +23,7 @@ class UserSignupSerializer(ModelSerializer):
             email=validated_data["email"],
             role=validated_data["role"],
         )
+        
+        
+
+    

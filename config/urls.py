@@ -17,8 +17,9 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 from rest_framework_simplejwt.views import TokenObtainPairView
-from client.views import ClientViewset
+from client.views import ClientViewSet
 from contract.views import ContractViewset
+from contract_status.views import ContractStatusViewset
 from event.views import EventViewset
 
 from user.views import RegisterApi
@@ -26,21 +27,20 @@ from user.views import RegisterApi
 
 
 client_router = routers.SimpleRouter()
-client_router.register(r"client/?", ClientViewset, basename="client")
+client_router.register(r"client/?", ClientViewSet, basename="client")
 
 contract_router = routers.SimpleRouter()
 contract_router.register(r"contract/?", ContractViewset, basename="contract")
 
 contract_status_router = routers.SimpleRouter()
-contract_status_router.register(r"contractstatus/?", ContractViewset, basename="contractstatus")
+contract_status_router.register(r"contractstatus/?", ContractStatusViewset, basename="contractstatus")
 
 event_router = routers.SimpleRouter()
 event_router.register(r"event/?", EventViewset, basename='event')
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("signup/", RegisterApi.as_view(), name="signup"),
-    path("login/", TokenObtainPairView.as_view(), name="login"),
+    path('', include('rest_framework.urls')),
     path('api/', include(client_router.urls)),
     path('api/', include(contract_router.urls)),
     path('api/', include(contract_status_router.urls)),
