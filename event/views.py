@@ -23,5 +23,5 @@ class EventViewset(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
     http_method_names = ["get", "post", "put", "delete"]
-    filterset_fields = ("support_contact", "client", "email")
     permission_classes = (IsEventOrManager, )
+    filterset_fields = ("support_contact", "client",)

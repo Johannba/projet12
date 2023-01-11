@@ -1,4 +1,3 @@
-
 from client.models import Client
 from rest_framework import viewsets
 from rest_framework.response import Response
@@ -6,6 +5,7 @@ from rest_framework.response import Response
 from client.serializers import ClientSerializer
 from client.permissions import IsSalesContactOrManager
 
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class ClientViewSet(viewsets.ModelViewSet):
@@ -22,5 +22,6 @@ class ClientViewSet(viewsets.ModelViewSet):
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
     http_method_names = ["get", "post", "put", "delete"]
-    filterset_fields = ("first_name", "last_name", "email")
     permission_classes = (IsSalesContactOrManager, )
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ("first_name", "last_name", "email")
