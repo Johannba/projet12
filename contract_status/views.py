@@ -16,11 +16,11 @@ class ContractStatusViewset(viewsets.ModelViewSet):
         else:
             queryset = ContratStatus.objects.all()
 
-        serializer = ContractStatusSerializer(queryset, many=True)
+        serializer = ContractStatusSerializer(self.filter_queryset(self.get_queryset()), many=True, context={"request": request})
         return Response(serializer.data)
 
     queryset = ContratStatus.objects.all()
     serializer_class = ContractStatusSerializer
     http_method_names = ["get", "post", "put", "delete"]
-    filterset_fields = ("first_name", "last_name", "email")
+    filterset_fields = ("is_signed",)
     permission_classes = (IsContractStatusOrManager, )

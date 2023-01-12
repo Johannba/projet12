@@ -17,11 +17,11 @@ class ContractViewset(viewsets.ModelViewSet):
         else:
             queryset = Contract.objects.all()
 
-        serializer = ContractSerializer(queryset, many=True)
+        serializer = ContractSerializer(self.filter_queryset(self.get_queryset()), many=True, context={"request": request})
         return Response(serializer.data)
 
     queryset = Contract.objects.all()
     serializer_class = ContractSerializer
     http_method_names = ["get", "post", "put", "delete"]
-    filterset_fields = ("first_name", "last_name", "email")
+    filterset_fields = ("sales_contact", "client", "status")
     permission_classes = (IsContractOrManager, )

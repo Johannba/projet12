@@ -17,7 +17,7 @@ class EventViewset(viewsets.ModelViewSet):
         else:
               queryset = Event.objects.all()
               
-        serializer = EventSerializer(queryset, many=True)
+        serializer = EventSerializer(self.filter_queryset(self.get_queryset()), many=True, context={"request": request})
         return Response(serializer.data)
 
     queryset = Event.objects.all()

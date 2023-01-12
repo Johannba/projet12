@@ -44,5 +44,5 @@ urlpatterns = [
     path('api/', include(client_router.urls)),
     path('api/', include(contract_router.urls)),
     path('api/', include(contract_status_router.urls)),
-     path('api/', include(event_router.urls)),
+    path('api/', include(event_router.urls)),
 ]

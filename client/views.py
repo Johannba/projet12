@@ -1,3 +1,4 @@
+
 from client.models import Client
 from rest_framework import viewsets
 from rest_framework.response import Response
@@ -16,7 +17,8 @@ class ClientViewSet(viewsets.ModelViewSet):
         else:
             queryset = Client.objects.all()
 
-        serializer = ClientSerializer(queryset, many=True)
+        serializer = ClientSerializer(self.filter_queryset(self.get_queryset()), many=True, context={"request": request})
+
         return Response(serializer.data)
 
     queryset = Client.objects.all()
