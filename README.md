@@ -45,4 +45,5 @@ Vous pouvez ensuite utiliser l'applicaton via les différents endpoints décrits
 Pour accéder aux fonctionnalités de l'application en tant qu'administrateur, utilisez les identifiants suivant:
 - test@test.com
 - 123456 
+
 sur ce endpoint: http://127.0.0.1:8000/login/ ou à cette addresse: http://127.0.0.1:8000/admin
