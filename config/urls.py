@@ -16,14 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
-from rest_framework_simplejwt.views import TokenObtainPairView
 from client.views import ClientViewSet
 from contract.views import ContractViewset
 from contract_status.views import ContractStatusViewset
 from event.views import EventViewset
-
-from user.views import RegisterApi
-
 
 
 client_router = routers.SimpleRouter()
@@ -33,16 +29,18 @@ contract_router = routers.SimpleRouter()
 contract_router.register(r"contract/?", ContractViewset, basename="contract")
 
 contract_status_router = routers.SimpleRouter()
-contract_status_router.register(r"contractstatus/?", ContractStatusViewset, basename="contractstatus")
+contract_status_router.register(
+    r"contractstatus/?", ContractStatusViewset, basename="contractstatus"
+)
 
 event_router = routers.SimpleRouter()
-event_router.register(r"event/?", EventViewset, basename='event')
+event_router.register(r"event/?", EventViewset, basename="event")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', include('rest_framework.urls')),
-    path('api/', include(client_router.urls)),
-    path('api/', include(contract_router.urls)),
-    path('api/', include(contract_status_router.urls)),
-    path('api/', include(event_router.urls)),
+    path("", include("rest_framework.urls")),
+    path("api/", include(client_router.urls)),
+    path("api/", include(contract_router.urls)),
+    path("api/", include(contract_status_router.urls)),
+    path("api/", include(event_router.urls)),
 ]

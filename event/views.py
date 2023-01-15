@@ -15,13 +15,17 @@ class EventViewset(viewsets.ModelViewSet):
         elif is_sales:
             queryset = Event.objects.filter(support_contact=request.user)
         else:
-              queryset = Event.objects.all()
-              
-        serializer = EventSerializer(self.filter_queryset(self.get_queryset()), many=True, context={"request": request})
+            queryset = Event.objects.all()
+
+        serializer = EventSerializer(
+            self.filter_queryset(self.get_queryset()), many=True, context={"request": request})
         return Response(serializer.data)
 
     queryset = Event.objects.all()
     serializer_class = EventSerializer
     http_method_names = ["get", "post", "put", "delete"]
-    permission_classes = (IsEventOrManager, )
-    filterset_fields = ("support_contact", "client",)
+    permission_classes = (IsEventOrManager,)
+    filterset_fields = (
+        "support_contact",
+        "client",
+    )

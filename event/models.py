@@ -1,25 +1,7 @@
-
 from django.db import models
 from contract_status.models import ContratStatus
 from user.models import User
 from client.models import Client
-
-
-class EventStatus(models.Model):
-
-    CREATED = 'created'
-    INPROGRESS = 'in_progress'
-    FINISHED = 'finished'
-    EVENT_STATUS = (
-        (CREATED, 'created'),
-        (INPROGRESS, 'in_progress'),
-        (FINISHED, 'finished')
-    )
-
-    event_status = models.CharField(max_length=20, choices=EVENT_STATUS)
-
-    def __str__(self):
-        return f'{self.event_status}'
 
 
 class Event(models.Model):
@@ -38,7 +20,5 @@ class Event(models.Model):
 
     notes = models.TextField(null=True, blank=True)
 
-
     def __str__(self):
-        return f'{self.name}'
-
+        return f"{self.name}"

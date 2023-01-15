@@ -16,13 +16,15 @@ class Client(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now_add=True)
 
-    sales_contact = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='sales_contact')
+    sales_contact = models.ForeignKey(
+        to=User, on_delete=models.CASCADE, related_name="sales_contact"
+    )
 
     class Meta:
-        verbose_name = 'Client'
+        verbose_name = "Client"
 
     def __str__(self):
-        return f'{self.first_name} {self.last_name}'
+        return f"{self.first_name} {self.last_name}"
 
     def update_date(self):
         self.date_updated = datetime.now()
@@ -30,6 +32,3 @@ class Client(models.Model):
     def save(self, *args, **kwargs):
         self.update_date()
         return super(Client, self).save()
-    
-
-    

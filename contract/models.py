@@ -16,16 +16,15 @@ class Contract(models.Model):
     amount = models.FloatField(default=0.0)
     payment_due = models.DateTimeField(auto_now_add=False)
 
-
     class Meta:
-        verbose_name = 'Contrat'
+        verbose_name = "Contrat"
 
     def __str__(self):
-        return f'{Client.objects.get(id=self.client.id)} {self.date_created}'
+        return f"{Client.objects.get(id=self.client.id)} {self.date_created}"
 
     def update_date(self):
         self.date_updated = datetime.now()
-        
+
     def save(self, *args, **kwargs):
         self.update_date()
         return super(Contract, self).save()
